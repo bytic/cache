@@ -88,7 +88,10 @@ class Manager
      */
     public function cachePath()
     {
-        return app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
+        if (function_exists('app')) {
+            return app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
+        }
+        return '/tmp';
     }
 
     /**
@@ -176,7 +179,7 @@ class Manager
         if (file_put_contents($file, $content)) {
             try {
                 $filesystem->chmod($file, 0777);
-            } catch (IOException $e) {
+            } catch (IOException $exception) {
                 // discard chmod failure (some filesystem may not support it)
             }
 
