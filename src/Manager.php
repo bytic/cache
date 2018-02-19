@@ -203,4 +203,20 @@ class Manager
             unlink($file);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function getTtl(): int
+    {
+        return $this->ttl;
+    }
+
+    /**
+     * @param int $ttl
+     */
+    public function setTtl(int $ttl)
+    {
+        $this->ttl = $ttl;
+    }
 }
