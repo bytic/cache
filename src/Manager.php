@@ -88,6 +88,9 @@ class Manager
      */
     public function cachePath()
     {
+        if (defined('CACHE_PATH')) {
+            return CACHE_PATH;
+        }
         if (function_exists('app')) {
             return app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
         }
