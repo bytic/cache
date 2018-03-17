@@ -19,11 +19,12 @@ class Manager
 
     /**
      * @param $cacheId
+     *
      * @return mixed
      */
     public function get($cacheId)
     {
-        if (!$this->valid($cacheId)) {
+        if ( ! $this->valid($cacheId)) {
             return null;
         }
 
@@ -32,6 +33,7 @@ class Manager
 
     /**
      * @param $cacheId
+     *
      * @return bool
      */
     public function valid($cacheId)
@@ -56,6 +58,7 @@ class Manager
 
     /**
      * @param $active
+     *
      * @return $this
      */
     public function setActive($active)
@@ -67,6 +70,7 @@ class Manager
 
     /**
      * @param $cacheId
+     *
      * @return bool
      */
     public function exists($cacheId)
@@ -76,6 +80,7 @@ class Manager
 
     /**
      * @param $cacheId
+     *
      * @return string
      */
     public function filePath($cacheId)
@@ -91,16 +96,18 @@ class Manager
         if (function_exists('app')) {
             return app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
         }
+
         return '/tmp';
     }
 
     /**
      * @param $cacheId
+     *
      * @return mixed
      */
     public function getData($cacheId)
     {
-        if (!isset($this->data[$cacheId])) {
+        if ( ! isset($this->data[$cacheId])) {
             $this->data[$cacheId] = $this->loadData($cacheId);
         }
 
@@ -110,15 +117,16 @@ class Manager
     /**
      * @param $cacheId
      * @param bool $retry
+     *
      * @return bool|mixed
      */
     public function loadData($cacheId, $retry = true)
     {
-        $file = $this->filePath($cacheId);
+        $file    = $this->filePath($cacheId);
         $content = file_get_contents($file);
-        $data = unserialize($content);
+        $data    = unserialize($content);
 
-        if (!$data) {
+        if ( ! $data) {
             if ($retry === false) {
                 return false;
             }
@@ -140,6 +148,7 @@ class Manager
     /**
      * @param $cacheId
      * @param $data
+     *
      * @return $this
      */
     public function set($cacheId, $data)
@@ -152,11 +161,12 @@ class Manager
     /**
      * @param $cacheId
      * @param $data
+     *
      * @return bool
      */
     public function saveData($cacheId, $data)
     {
-        $file = $this->filePath($cacheId);
+        $file    = $this->filePath($cacheId);
         $content = serialize($data);
 
         return $this->save($file, $content);
@@ -165,23 +175,19 @@ class Manager
     /**
      * @param $file
      * @param $content
+     *
      * @return bool
      */
     public function save($file, $content)
     {
         $dir = dirname($file);
-        $filesystem = FileSystem::instance();
 
-        if (!is_dir($dir)) {
-            $filesystem->createDirectory($dir, 0777);
+        if ( ! is_dir($dir)) {
+            mkdir($dir, 0777);
         }
 
         if (file_put_contents($file, $content)) {
-            try {
-                $filesystem->chmod($file, 0777);
-            } catch (IOException $exception) {
-                // discard chmod failure (some filesystem may not support it)
-            }
+            chmod($file, 0777);
 
             return true;
         } else {
