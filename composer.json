@@ -18,6 +18,7 @@
       "src"
     ],
     "files": [
+      "src/functions/application.php"
     ]
   },
   "autoload-dev": {

@@ -24,7 +24,7 @@ class Manager
      */
     public function get($cacheId)
     {
-        if ( ! $this->valid($cacheId)) {
+        if (!$this->valid($cacheId)) {
             return null;
         }
 
@@ -93,11 +93,7 @@ class Manager
      */
     public function cachePath()
     {
-        if (function_exists('app')) {
-            return app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
-        }
-
-        return '/tmp';
+        return cache_path();
     }
 
     /**
@@ -107,7 +103,7 @@ class Manager
      */
     public function getData($cacheId)
     {
-        if ( ! isset($this->data[$cacheId])) {
+        if (!isset($this->data[$cacheId])) {
             $this->data[$cacheId] = $this->loadData($cacheId);
         }
 
@@ -122,11 +118,11 @@ class Manager
      */
     public function loadData($cacheId, $retry = true)
     {
-        $file    = $this->filePath($cacheId);
+        $file = $this->filePath($cacheId);
         $content = file_get_contents($file);
-        $data    = unserialize($content);
+        $data = unserialize($content);
 
-        if ( ! $data) {
+        if (!$data) {
             if ($retry === false) {
                 return false;
             }
@@ -166,7 +162,7 @@ class Manager
      */
     public function saveData($cacheId, $data)
     {
-        $file    = $this->filePath($cacheId);
+        $file = $this->filePath($cacheId);
         $content = serialize($data);
 
         return $this->save($file, $content);
@@ -182,7 +178,7 @@ class Manager
     {
         $dir = dirname($file);
 
-        if ( ! is_dir($dir)) {
+        if (!is_dir($dir)) {
             mkdir($dir, 0777);
         }
 
