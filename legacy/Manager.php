@@ -82,7 +82,7 @@ class Manager
      */
     public function filePath($cacheId)
     {
-        $cacheId = DIRECTORY_SEPARATOR . trim($cacheId, [DIRECTORY_SEPARATOR]);
+        $cacheId = DIRECTORY_SEPARATOR . trim($cacheId, DIRECTORY_SEPARATOR);
         return $this->cachePath() . $cacheId . '.php';
     }
 
