@@ -1,8 +1,9 @@
 <?php
 
-namespace Nip\Cache\Tests;
+namespace Nip\Cache\Tests\Legacy;
 
 use Nip\Cache\Manager;
+use Nip\Cache\Tests\AbstractTest;
 
 /**
  * Class ManagerTest
@@ -20,6 +21,6 @@ class ManagerTest extends AbstractTest
     {
         $manager = new Manager();
         $manager->cachePath();
-        self::assertSame('/tmp', $manager->saveData(''));
+        self::assertSame('/tmp\test.php', $manager->filePath('test'));
     }
 }
