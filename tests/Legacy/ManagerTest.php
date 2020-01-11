@@ -21,6 +21,6 @@ class ManagerTest extends AbstractTest
     {
         $manager = new Manager();
         $manager->cachePath();
-        self::assertSame('/tmp\test.php', $manager->filePath('test'));
+        self::assertSame('/tmp' . DIRECTORY_SEPARATOR . 'test.php', $manager->filePath('test'));
     }
 }
