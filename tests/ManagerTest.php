@@ -15,4 +15,11 @@ class ManagerTest extends AbstractTest
         $manager = new Manager();
         self::assertSame('/tmp', $manager->cachePath());
     }
+
+    public function testSet()
+    {
+        $manager = new Manager();
+        $manager->cachePath();
+        self::assertSame('/tmp', $manager->saveData(''));
+    }
 }
