@@ -25,5 +25,4 @@ abstract class AbstractCachePool implements CacheItemPoolInterface
             $this->driver = new Ephemeral();
         }
     }
-
 }
