@@ -8,5 +8,4 @@ namespace Nip\Cache\Adapters\FileAdapter\Encoders;
  */
 interface EncoderInterface
 {
-
 }
