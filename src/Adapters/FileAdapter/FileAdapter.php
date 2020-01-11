@@ -3,6 +3,7 @@
 namespace Nip\Cache\Adapters\FileAdapter;
 
 use Nip\Cache\Adapters\AbstractAdapter;
+use Nip\Cache\Items\CacheItem;
 
 /**
  * Class FileAdapter
@@ -58,5 +59,21 @@ class FileAdapter extends AbstractAdapter
     public function commit()
     {
         // TODO: Implement commit() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function doFetch(array $ids)
+    {
+        // TODO: Implement doFetch() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function storeItemInCache(CacheItem $item)
+    {
+        // TODO: Implement storeItemInCache() method.
     }
 }

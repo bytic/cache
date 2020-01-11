@@ -3,7 +3,7 @@
 namespace Nip\Cache\Traits;
 
 use InvalidArgumentException;
-use Nip\Cache\Adapters\FileAdapter;
+use Nip\Cache\Adapters\FileAdapter\FileAdapter;
 
 /**
  * Trait HasDriversTrait
