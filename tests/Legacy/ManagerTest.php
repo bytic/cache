@@ -11,13 +11,13 @@ use Nip\Cache\Tests\AbstractTest;
  */
 class ManagerTest extends AbstractTest
 {
-    public function testCachePath()
+    public function test_cachePath()
     {
         $manager = new Manager();
         self::assertSame('/tmp', $manager->cachePath());
     }
 
-    public function testSet()
+    public function test_filePath()
     {
         $manager = new Manager();
         $manager->cachePath();
