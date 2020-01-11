@@ -5,10 +5,10 @@ namespace Nip\Cache\Pools;
 use Nip\Cache\Adapters\AbstractAdapter;
 
 /**
- * Class Repository
+ * Class CachePool
  * @package Nip\Cache
  */
-class Repository
+class CachePool
 {
     /**
      * @var AbstractAdapter

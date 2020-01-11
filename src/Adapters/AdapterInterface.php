@@ -2,18 +2,12 @@
 
 namespace Nip\Cache\Adapters;
 
+use Psr\Cache\CacheItemPoolInterface;
+
 /**
  * Interface DriverInterface
  * @package Nip\Cache\Drivers
  */
-interface AdapterInterface
+interface AdapterInterface extends CacheItemPoolInterface
 {
-    /**
-     * Retrieve an item from the cache by key.
-     *
-     * @param  string|array  $key
-     * @return mixed
-     */
-    public function get($key);
-
 }
