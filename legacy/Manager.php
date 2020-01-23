@@ -2,13 +2,17 @@
 
 namespace Nip\Cache;
 
+use Nip\Utility\Traits\SingletonTrait;
+
 /**
  * Class Manager
  * @package Nip\Cache
  */
 class Manager
 {
-    protected $active = false;
+    use SingletonTrait;
+
+    protected $active = true;
 
     protected $ttl = 180;
 
@@ -150,6 +154,12 @@ class Manager
         $this->data[$cacheId] = $data;
 
         return $this;
+    }
+
+    public function put($cacheId, $data)
+    {
+        $this->set($cacheId, $data);
+        $this->saveData($cacheId, $data);
     }
 
     /**
