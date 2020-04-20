@@ -28,8 +28,8 @@ trait InteractsWithConfig
      */
     protected function getConfig($name, $default = null)
     {
-        if (!function_exists('config')) {
-            return null;
+        if (!function_exists('config') || !function_exists('app')) {
+            return $default;
         }
         /** @noinspection PhpUnhandledExceptionInspection */
         $config = config();
