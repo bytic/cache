@@ -3,6 +3,7 @@
 namespace Nip\Cache\Cacheable;
 
 use DateInterval;
+use Nip\Utility\Str;
 
 /**
  * Trait CanCache
@@ -18,7 +19,7 @@ trait CanCache
      * @param null $needCaching
      * @return bool
      */
-    protected function needsCaching($needCaching = null): bool
+    public function needsCaching($needCaching = null): bool
     {
         if (is_bool($needCaching)) {
             $this->needsCaching = $needCaching;
@@ -67,7 +68,7 @@ trait CanCache
         if ($key !== null) {
             return $key;
         }
-        return __CLASS__;
+        return Str::slug(__CLASS__);
     }
 
     /**
