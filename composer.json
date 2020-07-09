@@ -42,7 +42,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Nip\\Cache\\Tests\\": "tests/src"
+      "Nip\\Cache\\Tests\\": "tests/src",
+      "Nip\\Cache\\Tests\\Fixtures\\": "tests/fixtures"
     }
   }
 }

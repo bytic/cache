@@ -31,8 +31,11 @@ trait InteractsWithConfig
         if (!function_exists('config') || !function_exists('app')) {
             return $default;
         }
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $config = config();
+        try {
+            $config = config();
+        } catch (\Exception $e) {
+            return $default;
+        }
         $configName = "cache.{$name}";
         if (!$config->has($configName)) {
             return $default;

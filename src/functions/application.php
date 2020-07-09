@@ -13,7 +13,7 @@ if (!function_exists('cache_path')) {
             $base = CACHE_PATH;
         }
 
-        if (function_exists('app')) {
+        if (function_exists('app') && app()->has('path.storage')) {
             $base = app('path.storage').DIRECTORY_SEPARATOR.'cache';
         }
 
