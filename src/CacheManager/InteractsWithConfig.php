@@ -8,7 +8,6 @@ namespace Nip\Cache\CacheManager;
  */
 trait InteractsWithConfig
 {
-
     /**
      * @param $name
      * @param null $default
