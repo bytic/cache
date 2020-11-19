@@ -36,7 +36,7 @@ trait CanCache
         $this->saveDataToCache($data);
     }
 
-    abstract function generateCacheData();
+    abstract public function generateCacheData();
 
     /**
      * @param null $key
@@ -56,7 +56,7 @@ trait CanCache
     protected function saveDataToCache($data, $key = null)
     {
         /** @noinspection PhpUnhandledExceptionInspection */
-        $this->cacheStore()->set($this->dataCacheKey($key), $data,$this->dataCacheTtl($key));
+        $this->cacheStore()->set($this->dataCacheKey($key), $data, $this->dataCacheTtl($key));
     }
 
     /**

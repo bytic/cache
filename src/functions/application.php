@@ -14,10 +14,10 @@ if (!function_exists('cache_path')) {
         }
 
         if (function_exists('app') && app()->has('path.storage')) {
-            $base = app('path.storage').DIRECTORY_SEPARATOR.'cache';
+            $base = app('path.storage') . DIRECTORY_SEPARATOR . 'cache';
         }
 
-        return $base.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $base . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 }
 

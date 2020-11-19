@@ -19,5 +19,4 @@ class HasCacheStoreObject
     {
         return $this->cacheStore();
     }
-
 }

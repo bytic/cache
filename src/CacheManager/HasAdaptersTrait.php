@@ -13,7 +13,6 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
  */
 trait HasAdaptersTrait
 {
-
     /**
      * @return string
      */
