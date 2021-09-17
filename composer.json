@@ -16,7 +16,7 @@
     "symfony/cache-implementation": "1.0"
   },
   "require": {
-    "php": "^7.1",
+    "php": "^7.1|^8.0",
     "bytic/utility": "^1.0",
     "psr/cache": "^1.0",
     "psr/log": "^1.0",

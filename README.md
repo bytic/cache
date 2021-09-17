@@ -10,3 +10,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/bytic/cache.svg?style=flat-square)](https://scrutinizer-ci.com/g/bytic/cache)
 [![StyleCI](https://styleci.io/repos/118474281/shield?branch=master)](https://styleci.io/repos/118474281)
 [![Total Downloads](https://img.shields.io/packagist/dt/bytic/cache.svg?style=flat-square)](https://packagist.org/packages/bytic/cache)
+
+### Inspiration
+* https://github.com/illuminate/cache
+* 

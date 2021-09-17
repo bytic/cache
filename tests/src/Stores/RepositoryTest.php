@@ -30,6 +30,26 @@ class RepositoryTest extends AbstractTest
         self::assertSame('myValue', $store->get('test'));
     }
 
+
+    public function test_remember()
+    {
+        $store = $this->initFileStore();
+        self::assertFalse($store->has('foo'));
+
+        $result = $store->remember('foo', 10, function () {
+            return 'bar';
+        });
+        self::assertSame('bar', $result);
+        self::assertSame('bar', $store->get('foo'));
+
+        $result = $store->remember('foo', 10, function () {
+            return 'bar2';
+        });
+
+        self::assertSame('bar', $result);
+        self::assertSame('bar', $store->get('foo'));
+    }
+
     protected function initFileStore()
     {
         $adapter = new FilesystemAdapter('', 0, CACHE_PATH);
