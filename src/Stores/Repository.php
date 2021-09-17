@@ -11,7 +11,6 @@ use Symfony\Component\Cache\Psr16Cache;
  */
 class Repository extends Psr16Cache
 {
-
     /**
      * Get an item from the cache, or execute the given Closure and store the result.
      *
