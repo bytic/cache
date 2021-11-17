@@ -2,15 +2,18 @@
 
 namespace Nip\Cache;
 
-use Nip\Container\ServiceProviders\Providers\AbstractServiceProvider;
+use ByTIC\PackageBase\BaseBootableServiceProvider;
 
 /**
  * Class CacheServiceProvider
  * @package Nip\Cache
  *
  */
-class CacheServiceProvider extends AbstractServiceProvider
+class CacheServiceProvider extends BaseBootableServiceProvider
 {
+    public const NAME = 'cache';
+    public const NAME_STORE = 'cache.store';
+
     public function register()
     {
         $this->registerManager();
@@ -19,14 +22,14 @@ class CacheServiceProvider extends AbstractServiceProvider
 
     protected function registerManager()
     {
-        $this->getContainer()->share('cache', function () {
+        $this->getContainer()->share(static::NAME, function () {
             return new CacheManager();
         });
     }
 
     protected function registerDefaultStore()
     {
-        $this->getContainer()->share('cache.store', function () {
+        $this->getContainer()->share(static::NAME_STORE, function () {
             return $this->getContainer()->get('cache')->store();
         });
     }
@@ -38,8 +41,8 @@ class CacheServiceProvider extends AbstractServiceProvider
     public function provides()
     {
         return [
-            'cache',
-            'cache.store',
+            static::NAME,
+            static::NAME_STORE,
         ];
     }
 }
