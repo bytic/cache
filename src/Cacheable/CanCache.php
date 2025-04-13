@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Nip\Cache\Cacheable;
 
@@ -56,7 +57,8 @@ trait CanCache
         if ($this->needsCaching() !== true) {
             return;
         }
-        $this->saveDataToCache();
+        $data = $this->getData();
+        $this->saveDataToCache($data);
     }
 
     /**
@@ -129,6 +131,11 @@ trait CanCache
         return DateInterval::createFromDateString('10 years');
     }
 
+    /**
+     * @param string $key
+     * @param mixed|null $default
+     * @return mixed|null
+     */
     protected function generateCacheDataKey(string $key, mixed $default = null)
     {
         return $default;
